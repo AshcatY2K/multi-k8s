@@ -6,7 +6,7 @@ before_install:
   - docker build -t igdeveloper/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run igdeveloper/react-test npm test -- --coverage
+  - docker run -e CI=true igdeveloper/react-test npm test
 
 after_success:
   - docker build -t igdeveloper/multi-client ./client
