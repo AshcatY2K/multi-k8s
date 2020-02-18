@@ -20,3 +20,15 @@ after_success:
   - docker push igdeveloper/multi-nginx
   - docker push igdeveloper/multi-server
   - docker push igdeveloper/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-west-1-124045052417
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
